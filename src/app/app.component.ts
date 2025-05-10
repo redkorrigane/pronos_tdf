@@ -1,20 +1,13 @@
+// app.component.ts
 import { Component } from '@angular/core';
-import { Router, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
-  selector: 'app-root',
   standalone: true,
+  selector: 'app-root',
   imports: [RouterOutlet],
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  template: `
+    <router-outlet></router-outlet>
+  `,
 })
-export class AppComponent {
-  title = 'pronos_tdf';
-
-  constructor(private router: Router) { }
-  
-  onContinue() {
-    this.router.navigateByUrl('facesnaps');
-}
-
-}
+export class AppComponent {}
