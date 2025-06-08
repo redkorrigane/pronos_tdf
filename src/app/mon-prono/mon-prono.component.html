@@ -1,13 +1,17 @@
-<table>
-    <tr>
-      <th>
-        <input type="text" placeholder="Titre ici">
-      </th>
-    </tr>
-   <!-- <tr>
-      @for (ligne of lignes; track ligne) {
-        <li>index</li>
-      }
-    </tr>-->
-    test
-  </table>
+<div class="page-container">
+  <div class="formulaire">
+    <h2>Mon Pronostic</h2>
+
+    <label>Nom du participant :</label>
+    <input [(ngModel)]="participant" placeholder="Votre nom" />
+
+    <div *ngFor="let coureur of coureurs; index as i; trackBy: trackByIndex">
+      <label>Position {{ i + 1 }} :</label>
+      <input [(ngModel)]="coureurs[i]" placeholder="Nom du coureur" />
+    </div>
+
+    <button (click)="validerPronostic()">Valider</button>
+    <p *ngIf="message">{{ message }}</p>
+  </div>
+</div>
+
