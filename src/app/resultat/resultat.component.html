@@ -1,4 +1,7 @@
-<h2>Classement pronostiqué</h2>
+<div class="page-container">
+  <tr> <td><h2>Classement pronostiqué</h2></td>
+    <td><button (click)="viewAccueil()">Accueil</button></td>
+<div class="formulaire">
 <table border="1" cellpadding="6">
   <thead>
     <tr>
@@ -8,8 +11,11 @@
   </thead>
   <tbody>
     <tr *ngFor="let ligne of classements; let i = index">
-      <td>{{ i + 1 }}</td>
+      <td>{{ getLibellePosition(i)}} :</td>
       <td *ngFor="let coureur of ligne">{{ coureur }}</td>
     </tr>
   </tbody>
 </table>
+</div>
+</tr>
+</div>

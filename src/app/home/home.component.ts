@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
 import { RouterModule, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
 
 
 @Component({
   standalone: true,
   selector: 'app-home',
-  imports: [CommonModule, RouterModule, FormsModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css'] // ← ce chemin est RELATIF au .ts
 })
+
 export class HomeComponent {
   constructor(private router: Router) {}
 

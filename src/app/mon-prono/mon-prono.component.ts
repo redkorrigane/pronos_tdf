@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
 import { SupabaseService } from '../supabase.service';
 import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common'; // <-- à importer
+import { CommonModule } from '@angular/common'; 
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
   selector: 'app-mon-prono',
-  imports: [FormsModule,CommonModule],
+  imports: [FormsModule,CommonModule,RouterModule],
   templateUrl: './mon-prono.component.html',
   styleUrls: ['./mon-prono.component.css']
 })
 export class MonPronoComponent {
+  [x: string]: any;
   participant = '';
-  coureurs: string[] = ['', '', '', '', '']; // Top 5 par défaut
+  coureurs: string[] = ['', '', '', '', '','', '', '', '', '','', '', '', '', '','']; // prono par défaut
   message = '';
 
-  constructor(private pronoservice: SupabaseService) {}
+  constructor(private pronoservice: SupabaseService,private router: Router) {}
   
   async ngOnInit() {
     console.info('🟡 AppComponent init');
@@ -41,11 +43,40 @@ export class MonPronoComponent {
     }
 
     this.message = '✅ Pronostic enregistré avec succès !';
-    this.coureurs = ['', '', '', '', ''];
+    this.coureurs = ['', '', '', '', '','', '', '', '', '','', '', '', '', '',''];
     this.participant = '';
   }
 
   trackByIndex(index: number, item: string): number {
     return index;
   }
+
+  getLibellePosition (position: number): string{
+
+    let label = 'Position' + position;
+switch (position){
+    case 11:
+    label='Maillot vert';
+    break;
+    case 12:
+    label='Maillot à pois';
+    break;
+    case 13:
+    label='Maillot blanc';
+    break;
+    case 14:
+    label='1ère femme';
+    break;
+    case 15:
+    label='2ème femme';
+    break;
+    case 16:
+    label='3ème femme';
+    break;
+  }
+    return label;
+}
+viewAccueil() {
+  this.router.navigate(['']);
+}
 }
