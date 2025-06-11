@@ -1,21 +1,27 @@
 <div class="page-container">
+
+  <!-- Bouton Accueil en haut à gauche -->
+  <button class="btn-accueil" (click)="viewAccueil()">Accueil</button>
+
   <div class="formulaire">
-    <div>   
-  <td>  <h2>Mon Pronostic</h2></td> 
-  <td>      <button (click)="viewAccueil()">Accueil</button></td> 
-  </div>
 
-    <label>Nom du participant :</label>
-    <input [(ngModel)]="participant" placeholder="Votre nom" />
+    <h2>Mon Pronostic</h2>
 
-    <div *ngFor="let coureur of coureurs; index as i; trackBy: trackByIndex"> 
-     <label>{{ getLibellePosition(i + 1)}} :</label>
+    <!-- Champ nom -->
+    <div class="input-row">
+      <label>Nom du participant :</label>
+      <input [(ngModel)]="participant" placeholder="Votre nom" />
+    </div>
+
+    <!-- Champs coureurs -->
+    <div *ngFor="let coureur of coureurs; index as i; trackBy: trackByIndex" class="input-row">
+      <label>{{ getLibellePosition(i + 1) }} :</label>
       <input [(ngModel)]="coureurs[i]" placeholder="Nom du coureur" />
     </div>
 
+    <!-- Bouton validation -->
     <button (click)="validerPronostic()">Valider</button>
     <p *ngIf="message">{{ message }}</p>
+
   </div>
-
 </div>
-

@@ -29,7 +29,7 @@ export class ResultatComponent {
 
   getLibellePosition (position: number): string{
 
-    let label = 'Position' + position;
+    let label = 'Position ' + position;
 switch (position){
     case 11:
     label='Maillot vert';
